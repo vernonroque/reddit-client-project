@@ -43,7 +43,7 @@
 
 .subreddit_container{
   margin-top:85px;
-  height:100px;
+  height:100rem;
   width:100%;
   border: 2px solid red;
   font: black;
@@ -52,17 +52,33 @@
 
 .main_section{
   margin-top: 85px;
-  height:100px;
+  height:100rem;
   width:100%;
   font: black;
   font-weight: 700;
   position: relative;
   border: 2px solid red;
+  overflow: scroll;
 }
 .body_section{
   display:grid;
   grid-template-columns: 70% 30%;
   grid-gap:20px;
+}
+.subreddit_icon{
+  border-radius:50%;
+  border: 2px solid blueviolet;
+  height:2rem;
+  width: 2rem;
+}
+.subreddit_button{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+}
+.subreddit_name{
+  font-size: 20px;
+  font-family:Arial;
 }
 
 @keyframes App-logo-float {
