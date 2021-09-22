@@ -3,29 +3,14 @@ import logo from './logo.svg';
 import {FaReddit} from "react-icons/fa";
 import { SubredditContainer } from './features/subredditSection/subredditContainer';
 import {MainfeedContainer} from './features/mainfeedSection/mainfeedContainer';
-
+import{useDispatch, useSelector} from 'redux'; 
 import './App.css';
 
 function App() {
 
-  /*
-  useEffect(() => {
-    fetch('https://www.reddit.com/r/pokemon.json')
-    .then(fetchedData =>{
-      if(fetchedData.status !==200){
-        console.log('error');
-        return;
-      }
-      fetchedData.json().then(data=>{
-        console.log(data.data.children);
-      });
-    })
-  });*/
-
   const [articles, setArticles] = useState([]);
-  //const [id,setId] = useState('');
+  
   const [subreddit,setSubreddit] = useState('');
-  //const [firstPostComment, setFirstPostComment] = useState([]);
 
     useEffect(() => {
 
@@ -34,26 +19,14 @@ function App() {
          const redditArticles = await fetch ('https://www.reddit.com/r/pokemon.json');
          const json = await redditArticles.json();
          setArticles(json.data.children);
-
-         
-         //const articleComments = json.data.children[0].data.permalink;
-         //console.log(articleComments);
-
-        // setId(json.data.children[0].data.id);
-         //console.log(id);
+         console.log(articles);
 
          setSubreddit(json.data.children[0].data.subreddit_name_prefixed);
-         //console.log(subreddit);
-
-        // const redditComments = await fetch(`https://www.reddit.com/${subreddit}/comments/${id}.json`);
-         //const json_2 = await redditComments.json();
-         //setFirstPostComment(json_2[0].data);
 
         }
         fetchRedditArticles();
     },[subreddit]);
     
-    //console.log(articles);
   
   return (
   <>
