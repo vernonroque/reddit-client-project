@@ -7,7 +7,7 @@ export const loadSubreddits = ()=> async (dispatch) => {
 
   const response = await fetch(`https://www.reddit.com/r/popular.json`);
   const json = await response.json();
-  dispatch(getSubreddits(json));
+  dispatch(getSubreddits(json.data.children));
 
 };
 
@@ -33,8 +33,12 @@ export const loadSubreddits = ()=> async (dispatch) => {
         name: 'subreddits',
         initialState: {
           // Add initial state properties here.
+          subreddits: [],
           isLoadingSubreddits: false,
           failedToLoadSubreddits: false
+        },
+        reducers:{
+  
         },
         // Add extraReducers here.
         extraReducers: {
@@ -58,6 +62,6 @@ export const loadSubreddits = ()=> async (dispatch) => {
 
 //export const selectSubreddits = (state) => state.comments.byArticleId;
 //export const isLoadingSubreddits = (state) => state.comments.isLoadingComments;
-export const subredditsList = (state) => state;
+export const selectSubreddits = (state) => state.subreddits.subreddits;
 
 export default subredditsSlice.reducer;

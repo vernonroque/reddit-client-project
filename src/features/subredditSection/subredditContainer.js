@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadSubreddits,subredditsList } from './subredditSlice';
+import { loadSubreddits,selectSubreddits } from './subredditSlice';
 
 export const SubredditContainer = () => {
 
 const dispatch = useDispatch();
-const subreddits= useSelector(subredditsList);
+const subreddits= useSelector(selectSubreddits);
 console.log('subreddit info',subreddits);
 
 const [loaded,setLoaded] = useState(false);
