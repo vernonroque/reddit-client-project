@@ -61,7 +61,7 @@ useEffect(()=>{
                 { subreddits.length>0 && subreddits.map((element,index)=> {
                     return (
                         <>
-                        <h2 key={index} className ='subreddit_name'>{element.data.subreddit}</h2>
+                        <h2 key={index} className ='subreddit_name'>{element.subreddit}</h2>
                         <br></br>
                         </>
         

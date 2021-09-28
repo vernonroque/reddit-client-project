@@ -1,33 +1,40 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import React, {useState,useEffect} from 'react';
 
-const LOAD_SUBREDDITS = 'subreddits/loadSubreddits';
+//const LOAD_SUBREDDITS = 'subreddits/loadSubreddits';
 
-export const loadSubreddits = ()=> async (dispatch) => {
+// export const loadSubreddits = ()=> async (dispatch) => {
 
-  const response = await fetch(`https://www.reddit.com/r/popular.json`);
-  const json = await response.json();
-  dispatch(getSubreddits(json.data.children));
+//   const response = await fetch(`https://www.reddit.com/r/popular.json`);
+//   const json = await response.json();
+//   dispatch(getSubreddits(json.data.children));
 
-};
+// };
+// export const loadSubreddits = ()=> async (dispatch) => {
 
-    const getSubreddits = (subreddits) => {
-      return {
-        type: LOAD_SUBREDDITS,
-        payload: subreddits
-      }
-    }
+//   const response = await fetch(`https://www.reddit.com/r/popular.json`);
+//   const json = await response.json();
+//   const subreddits = json.data.children.map((element) => element.data);
+//   dispatch(getSubreddits(subreddits));
+// };
 
-    export const subredditsReducer = (state=[],action) => {
-      switch(action.type){
-        case LOAD_SUBREDDITS:
-          return {
-            ...action.payload
-          }
-        default: return state;
+//     const getSubreddits = (subreddits) => {
+//       return {
+//         type: LOAD_SUBREDDITS,
+//         payload: subreddits
+//       }
+//     }
 
-      }
-    }
+//     export const subredditsReducer = (state=[],action) => {
+//       switch(action.type){
+//         case LOAD_SUBREDDITS:
+//           return {
+//             ...action.payload
+//           }
+//         default: return state;
+
+//       }
+//     }
 
     export const subredditsSlice = createSlice({
         name: 'subreddits',
@@ -38,30 +45,41 @@ export const loadSubreddits = ()=> async (dispatch) => {
           failedToLoadSubreddits: false
         },
         reducers:{
-  
-        },
-        // Add extraReducers here.
-        extraReducers: {
-          [loadSubreddits.pending]: (state,action) => {
+          startGetSubreddits(state){
             state.isLoadingSubreddits = true;
             state.failedToLoadSubreddits = false;
-      
           },
-          [loadSubreddits.fulfilled]: (state,action) => {
-          //state.byArticleId[action.payload.articleId] = action.payload.comments;
-          state.isLoadingSubreddits = false;
-          state.failedToLoadSubreddits = false;
-         
-          },
-          [loadSubreddits.rejected]: (state,action) => {
+          getSubredditsSuccess(state,action){
             state.isLoadingSubreddits = false;
-          state.failedToLoadSubreddits = true;
+            state.subreddits = action.payload;
+          },
+          getSubredditsFailed(state){
+            state.isLoadingSubreddits = false;
+            state.failedToLoadSubreddits = true;
           }
         }
       });
 
+      export const {
+        getSubredditsFailed,
+        getSubredditsSuccess,
+        startGetSubreddits
+      } = subredditsSlice.actions;
+
+      export default subredditsSlice.reducer;
+
+      export const loadSubreddits = ()=> async (dispatch) => {
+
+        const response = await fetch(`https://www.reddit.com/r/popular.json`);
+        const json = await response.json();
+        const subreddits = json.data.children.map((element) => element.data);
+        dispatch(getSubredditsSuccess(subreddits));
+      };
+
+
+      
 //export const selectSubreddits = (state) => state.comments.byArticleId;
 //export const isLoadingSubreddits = (state) => state.comments.isLoadingComments;
 export const selectSubreddits = (state) => state.subreddits.subreddits;
 
-export default subredditsSlice.reducer;
+
