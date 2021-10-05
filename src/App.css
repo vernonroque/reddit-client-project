@@ -43,7 +43,7 @@
 
 .subreddit_container{
   margin-top:85px;
-  height:100rem;
+  height:125rem;
   width:100%;
   border: 2px solid red;
   font: black;
@@ -72,13 +72,29 @@
   width: 2rem;
 }
 .subreddit_button{
-  display:flex;
-  align-items:center;
-  justify-content:flex-start;
+  cursor:pointer;
+  font-family: 'Courier New', Courier, monospace;
+  border: none;
+  padding: 1rem;
+  padding-right:7rem;
+  
+}
+.subreddit_button:hover {
+  background-color: #141c3a;
+  color: #ffffff;
 }
 .subreddit_name{
   font-size: 20px;
   font-family:Arial;
+}
+.subredditList{
+  display:block;
+  
+
+}
+.subredditListContainer{
+  display:block;
+  border: 2px solid blue;
 }
 
 @keyframes App-logo-float {

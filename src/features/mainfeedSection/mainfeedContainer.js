@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+//import { useDispatch, useSelector } from 'react-redux';
 import { CommentsContainer } from '../commentsSection/commentsContainer';
 
 export const MainfeedContainer = (props) => {
+
     
     return(
         <>
@@ -14,12 +15,9 @@ export const MainfeedContainer = (props) => {
                 <CommentsContainer postData = {props.article} subredditName ={props.subredditName} />
             <br></br>
         </article>
-
-
+        
         </>
-
-
-
+        
     );
 
 

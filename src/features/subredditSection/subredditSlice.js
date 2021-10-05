@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import React, {useState,useEffect} from 'react';
 
+
 //const LOAD_SUBREDDITS = 'subreddits/loadSubreddits';
 
 // export const loadSubreddits = ()=> async (dispatch) => {
@@ -35,7 +36,6 @@ import React, {useState,useEffect} from 'react';
 
 //       }
 //     }
-
     export const subredditsSlice = createSlice({
         name: 'subreddits',
         initialState: {
@@ -68,6 +68,7 @@ import React, {useState,useEffect} from 'react';
 
       export default subredditsSlice.reducer;
 
+      //this is the async Thunk
       export const loadSubreddits = ()=> async (dispatch) => {
 
         const response = await fetch(`https://www.reddit.com/r/popular.json`);
@@ -77,9 +78,7 @@ import React, {useState,useEffect} from 'react';
       };
 
 
-      
-//export const selectSubreddits = (state) => state.comments.byArticleId;
-//export const isLoadingSubreddits = (state) => state.comments.isLoadingComments;
+ 
 export const selectSubreddits = (state) => state.subreddits.subreddits;
 
 
