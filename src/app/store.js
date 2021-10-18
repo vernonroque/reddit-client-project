@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import subredditsReducer  from '../features/subredditSection/subredditSlice';
+import mainfeedReducer from '../features/mainfeedSection/mainfeedSlice';
 import {createStore,combineReducers} from 'redux';
 //import thunk from "redux-thunk";
 //import { applyMiddleware } from "redux";
@@ -7,7 +8,8 @@ import {createStore,combineReducers} from 'redux';
 
 export const store = configureStore({
     reducer: combineReducers({
-          subreddits:subredditsReducer
+          subreddits:subredditsReducer,
+          mainfeedArticles:mainfeedReducer
     })
 });
 

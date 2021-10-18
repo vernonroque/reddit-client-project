@@ -52,13 +52,13 @@
 
 .main_section{
   margin-top: 85px;
-  height:100rem;
+  height:auto;
   width:100%;
   font: black;
   font-weight: 700;
   position: relative;
   border: 2px solid red;
-  overflow: scroll;
+  
 }
 .body_section{
   display:grid;
@@ -89,12 +89,34 @@
 }
 .subredditList{
   display:block;
+  align-items: center;
   
-
 }
 .subredditListContainer{
   display:block;
   border: 2px solid blue;
+}
+.article_container{
+  display:flex;
+  width:100%;
+  height:auto;
+  border: 2px solid yellowgreen;
+  justify-content: center;
+}
+.article_content_box{
+  display:flex;
+  border: 2px solid blueviolet;
+  align-items:center;
+  flex-direction:column;
+}
+.article_title{
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  color:black;
+}
+.actual_image{
+  height:50rem;
+  width:60rem;
 }
 
 @keyframes App-logo-float {

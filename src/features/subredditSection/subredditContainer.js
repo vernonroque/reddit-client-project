@@ -6,7 +6,7 @@ import { SubredditList } from './subredditList';
 export const SubredditContainer = () => {
 
 const dispatch = useDispatch();
-const subreddits= useSelector(selectSubreddits);
+const subreddits = useSelector(selectSubreddits);
 console.log('subreddit info',subreddits);
 
 useEffect(() => {
@@ -47,14 +47,12 @@ useEffect(() => {
         <section className="subreddit_container">
             <h1 className="subreddits_title">Subreddits</h1>
             <div>
-               
                 { subreddits.length>0 && subreddits.map((element,index)=>
                     <SubredditList key={index} className="subreddit_name" subredditElement ={element.subreddit} />
                 )}
                 {/* <img className='subreddit_icon' src = {icon} alt ="subreddit logo"/>
                 <h2 className='subreddit_name'>{}</h2> */}
             </div>
-
         </section>
         </>
     );

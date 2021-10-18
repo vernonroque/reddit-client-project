@@ -18,14 +18,11 @@ export const SubredditList = (props) => {
                 setIcon(json.data.icon_img);
         }
         fetchSubredditIcon();
-        console.log("icon",icon);
+        //console.log("icon",icon);
 
     },[props.subredditElement,icon]);
 
-    const handleClick = () => {
-        
-
-    }
+    
 
    
     return (

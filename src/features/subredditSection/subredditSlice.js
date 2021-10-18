@@ -78,7 +78,6 @@ import React, {useState,useEffect} from 'react';
       };
 
 
- 
 export const selectSubreddits = (state) => state.subreddits.subreddits;
 
 
