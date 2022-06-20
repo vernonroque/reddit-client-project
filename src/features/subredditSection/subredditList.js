@@ -22,9 +22,6 @@ export const SubredditList = (props) => {
 
     },[props.subredditElement,icon]);
 
-    
-
-   
     return (
         <ul className="subredditListContainer">
             <br></br>

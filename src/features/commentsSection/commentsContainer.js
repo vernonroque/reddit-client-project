@@ -1,34 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import {FaRegCommentAlt} from "react-icons/fa";
+import { loadComments,selectComments } from './commentsSlice';
 
 
 export const CommentsContainer = (props) => {
-    const [firstComment,setFirstComment] =useState('');
+    const [commentsArr,setCommentsArr] =useState([]);
     
     //console.log(props.postData.id);
+    const dispatch = useDispatch();
+    const comments = useSelector(selectComments);
+   // console.log('comments from useSelector',useSelector(selectComments));
+    
+    useEffect(() => {
 
-    useEffect(()=>{
-        const fetchFirstComment = async() => {
-            const fetchCommentData = await fetch(`https://www.reddit.com/${props.subredditName}/comments/${props.postData.id}/.json`);
-            const json = await fetchCommentData.json();
-            setFirstComment(json[1].data.children[0].data.body);
-            //console.log(json[1].data.children[0].data.body);
-            
-    
-        }
-        fetchFirstComment();
-    });
-    
+        dispatch(loadComments(props.article.permalink));
+        setCommentsArr(comments);
+    },commentsArr)
+
+    console.log('the comments array', commentsArr);
+
     
 
+    // useEffect(() => {
+
+    //     setCommentsArr(comments);
+
+    // },commentsArr.length)
+    
+    
     return(
-
         <>
-        <div className='comments_section'>
+        <div className="footer_items">
+                <h2>{props.article.author}</h2>
+                {/* <h2>{hours}</h2> */}
+                <button onClick = {()=> dispatch(loadComments(props.article.permalink))} className="comment_button">
+                <FaRegCommentAlt size="1.7rem"/>
+                </button>
+            </div>
+            <div className='comments_section'>
                     <h2>First Comment:</h2>
-                    <p>{firstComment}</p>
-                </div>
-
+                    {commentsArr !== undefined ? <p>{commentsArr[0]}</p> : '' }
+                    
+        </div>
+        
         </>
     )
 }
