@@ -15,6 +15,7 @@ const [articles, setArticles] = useState([]);
   
  //const [subreddit,setSubreddit] = useState('');
 
+ //used to get the default articles from r/popular at beginning of launch
 useEffect(() => {
     if(articles.length===0)
         {
@@ -32,8 +33,6 @@ if(articles.length !== 0){
     console.log('articles', articles);
 console.log('1st article permalink', articles[0].permalink);
 }
-
-
 
     // return(
     //     <>
@@ -59,6 +58,7 @@ console.log('1st article permalink', articles[0].permalink);
                 {/* <CommentsContainer postData = {props.article} subredditName ={props.subredditName} /> */}
             <br></br>
          </article>
+
         
         </>
     );

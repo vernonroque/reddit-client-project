@@ -26,12 +26,12 @@ export const MainfeedList = (props) => {
     //let hours = dateObj.getUTCHours().toString().padStart(2,0);
 
     // console.log('dateObj: ', dateObj);
-    useEffect(() => {
-        if(props.article !== undefined){
-            dispatch(loadComments(props.article.permalink));
-        }
+    // useEffect(() => {
+    //     if(props.article !== undefined){
+    //         dispatch(loadComments(props.article.permalink));
+    //     }
         
-    })
+    //  })
 
     return (
         <>
@@ -51,8 +51,6 @@ export const MainfeedList = (props) => {
             </div>
             <CommentsContainer subreddit = {props.subreddit} article = {props.article}/>
             
-            
-                {/* <CommentsContainer postData = {props.article} subredditName ={props.subredditName} /> */}
             <br></br>
         </article>
         </>
