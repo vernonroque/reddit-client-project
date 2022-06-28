@@ -1,9 +1,7 @@
-import React, {useState,useEffect} from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import {FaReddit} from "react-icons/fa";
 import { SubredditContainer } from './features/subredditSection/subredditContainer';
 import {MainfeedContainer} from './features/mainfeedSection/mainfeedContainer';
-import{useDispatch, useSelector} from 'redux'; 
 import './App.css';
 
 function App() {

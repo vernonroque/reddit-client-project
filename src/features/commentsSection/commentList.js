@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-// import { loadComments,selectComments } from './commentsSlice';
+import { useSelector } from 'react-redux';
 import {selectMainfeed} from '../mainfeedSection/mainfeedSlice';
 import {CommentItem} from './commentItem';
 

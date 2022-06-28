@@ -1,14 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {FaRegCommentAlt} from "react-icons/fa";
-import { loadComments,selectComments } from './commentsSlice';
+import React from 'react';
 import {CommentList} from './commentList';
 
 
 export const CommentsContainer = (props) => {
-    const [commentsArr,setCommentsArr] = useState([]);
     
-    const dispatch = useDispatch();
     //const comments = useSelector(selectComments);
    //console.log('comments from useSelector',useSelector(selectComments));
     

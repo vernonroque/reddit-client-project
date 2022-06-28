@@ -1,6 +1,4 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
-import React, {useState,useEffect} from 'react';
-
+import {createSlice} from '@reduxjs/toolkit';
 
 //const LOAD_SUBREDDITS = 'subreddits/loadSubreddits';
 
