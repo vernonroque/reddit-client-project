@@ -1,7 +1,4 @@
-import React, {useState,useEffect} from 'react';
-import {createAsyncThunk, createSlice,current} from '@reduxjs/toolkit';
-import{useDispatch, useSelector} from 'react-redux'; 
-
+import { createSlice,current} from '@reduxjs/toolkit';
 
 export const commentsSlice = createSlice (
 {

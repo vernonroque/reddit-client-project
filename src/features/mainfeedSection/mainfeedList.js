@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
 import { CommentsContainer } from '../commentsSection/commentsContainer';
-import {loadComments} from '../commentsSection/commentsSlice';
 
 export const MainfeedList = (props) => {
 
-    const dispatch = useDispatch();
 
     // const [hours,setHours] = useState([]);
     // const [dateObj,setDateObj] = useState([]);

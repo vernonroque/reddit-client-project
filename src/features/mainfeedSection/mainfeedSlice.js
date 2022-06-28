@@ -1,6 +1,6 @@
-import React, {useState,useEffect} from 'react';
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
-import{useDispatch, useSelector} from 'redux'; 
+
+import {createSlice} from '@reduxjs/toolkit';
+
 
 
 export const mainfeedSlice = createSlice({

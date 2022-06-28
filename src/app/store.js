@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import subredditsReducer  from '../features/subredditSection/subredditSlice';
 import mainfeedReducer from '../features/mainfeedSection/mainfeedSlice';
 import commentsReducer from  '../features/commentsSection/commentsSlice';
-import {createStore,combineReducers} from 'redux';
+import {combineReducers} from 'redux';
 //import thunk from "redux-thunk";
 //import { applyMiddleware } from "redux";
 
