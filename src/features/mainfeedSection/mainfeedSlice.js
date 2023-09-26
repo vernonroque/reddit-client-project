@@ -50,6 +50,8 @@ export const defaultMainfeedArticles = ()=> async (dispatch) => {
     console.log('Mainfeed Articles', mainfeedArticles);
     dispatch(getMainfeedArticlesSuccess(mainfeedArticles));
     }
+  else
+    console.log(response);
   
 };
 

@@ -1,4 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
+import React, { useEffect } from 'react';
+const subSliceToken = process.env.REACT_APP_REDDIT_API_TOKEN;
 
 //const LOAD_SUBREDDITS = 'subreddits/loadSubreddits';
 
@@ -34,6 +36,7 @@ import {createSlice} from '@reduxjs/toolkit';
 
 //       }
 //     }
+
     export const subredditsSlice = createSlice({
         name: 'subreddits',
         initialState: {
@@ -69,10 +72,13 @@ import {createSlice} from '@reduxjs/toolkit';
       //this is the async Thunk
       export const loadSubreddits = ()=> async (dispatch) => {
 
-        const response = await fetch(`https://www.reddit.com/r/popular.json`);
-        const json = await response.json();
-        const subreddits = json.data.children.map((element) => element.data);
-        dispatch(getSubredditsSuccess(subreddits));
+        const response = await fetch(`https://www.reddit.com/r/popular.json?client_id=${subSliceToken}`,{cache:'no-cache'});
+          console.log("response>>>>",response);
+          const json = await response.json();
+          const subreddits = json.data.children.map((element) => element.data);
+          dispatch(getSubredditsSuccess(subreddits));
+
+        
       };
 
 

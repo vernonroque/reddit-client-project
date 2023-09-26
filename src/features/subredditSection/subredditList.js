@@ -5,22 +5,28 @@ import { loadMainfeedArticles } from '../mainfeedSection/mainfeedSlice';
 export const SubredditList = (props) => {
      const[icon,setIcon] = useState('');
      const dispatch = useDispatch();
+     //const token = process.env.REACT_APP_REDDIT_API_TOKEN;
+    //  console.log(token);
 
-    useEffect(() => {
-        const fetchSubredditIcon = async() => {
-            const subredditIcon = await fetch(`https://www.reddit.com/r/${props.subredditElement}/about.json`);
-            const json = await subredditIcon.json();
-            if(json.data.icon_img==="")
-                setIcon(json.data.header_img);
-            else if(json.data.icon_img===false && json.data.header_img===false)
-                setIcon('');
-            else
-                setIcon(json.data.icon_img);
-        }
-        fetchSubredditIcon();
-        //console.log("icon",icon);
+    // useEffect(() => {
+    //     const fetchSubredditIcon = async() => {
+    //         const subredditIcon = await fetch(`https://www.reddit.com/r/${props.subredditElement}/about.json`);
 
-    },[props.subredditElement,icon]);
+    //         if(!subredditIcon.ok)
+    //             console.log(subredditIcon);
+
+    //         const json = await subredditIcon.json();
+    //         if(json.data.icon_img==="")
+    //             setIcon(json.data.header_img);
+    //         else if(json.data.icon_img===false && json.data.header_img===false)
+    //             setIcon('');
+    //         else
+    //             setIcon(json.data.icon_img);
+    //     }
+    //     fetchSubredditIcon();
+    //     //console.log("icon",icon);
+
+    // },[props.subredditElement]);
 
     return (
         <ul className="subredditListContainer">

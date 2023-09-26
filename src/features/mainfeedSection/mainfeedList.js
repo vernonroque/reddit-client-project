@@ -43,7 +43,7 @@ export const MainfeedList = (props) => {
                 {(props.article.url_overridden_by_dest &&
                 props.article.url_overridden_by_dest.includes('i.redd.it')
                     ) ?
-                <img className="actual_image" src={props.article.url_overridden_by_dest} alt='post thumbnail' onerror='this.style.display = "none"'/>: ''} 
+                <img className="actual_image" src={props.article.url_overridden_by_dest} alt='post thumbnail' onerror='this.style.display = "none"'/>: 'no pic available'} 
            
             </div>
             <CommentsContainer subreddit = {props.subreddit} article = {props.article}/>
