@@ -1,17 +1,39 @@
-import React, { useEffect } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadSubreddits,selectSubreddits } from './subredditSlice';
 import { SubredditList } from './subredditList';
+import { copyDefaultMainfeedState } from './subredditSlice'; // Import the action
+import { selectDefaultMainfeed } from '../mainfeedSection/mainfeedSlice';
+
+
 
 export const SubredditContainer = () => {
 
 const dispatch = useDispatch();
-const subreddits = useSelector(selectSubreddits);
-console.log('subreddit info',subreddits);
 
+const subreddits = useSelector(selectSubreddits);
+const mainFlag = useSelector(selectDefaultMainfeed);
+//const[dispatchOnce,setDispatchOnce] = useState(false);
+
+//const staticSubs = [...subreddits];
+
+//const [call,setCall] = useState(true);
+console.log("The mainFlag stuff", mainFlag);
+console.log('subreddit info',subreddits);
 useEffect(() => {
-    dispatch(loadSubreddits());
-},[dispatch]);
+    // Dispatch the action to copy the state
+
+        console.log('loading');
+       dispatch(loadSubreddits());
+
+        
+  }, [dispatch]);
+
+
+
+// useEffect(() => {
+//     dispatch(loadSubreddits());
+// },[dispatch]);
 
 //const [loaded,setLoaded] =useState(false);
 

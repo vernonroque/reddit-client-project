@@ -2,7 +2,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 
-
 export const mainfeedSlice = createSlice({
   name: 'mainfeedArticles',
   initialState: {
@@ -47,7 +46,7 @@ export const defaultMainfeedArticles = ()=> async (dispatch) => {
   if(response.ok)
     {
     const mainfeedArticles = json.data.children.map((element) => element.data);
-    console.log('Mainfeed Articles', mainfeedArticles);
+    //console.log('Mainfeed Articles', mainfeedArticles);
     dispatch(getMainfeedArticlesSuccess(mainfeedArticles));
     }
   else
@@ -59,7 +58,7 @@ export const defaultMainfeedArticles = ()=> async (dispatch) => {
 export const loadMainfeedArticles = (subredditElement)=> async (dispatch) => {
 
   // console.log(subredditElement);
-
+  
   const response = await fetch(`https://www.reddit.com/r/${subredditElement}.json`);
   const json = await response.json();
   // console.log('json data',json);

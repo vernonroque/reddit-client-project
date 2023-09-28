@@ -22,7 +22,7 @@ const base64ClientIdAndSecret = btoa(clientIdAndSecret); // Base64 encode client
 
 const randomBytes = CryptoJS.lib.WordArray.random(16); // 16 bytes for a random value
 const randomHex = randomBytes.toString(CryptoJS.enc.Hex);
-console.log("randomHex>>>",randomHex);
+//console.log("randomHex>>>",randomHex);
 
 // console.log("clientId>>>",clientId)
 // console.log("secret>>>",clientSecret)
@@ -36,24 +36,24 @@ data.append('grant_type', 'password');
 data.append('username', username);
 data.append('password', password);
 
-console.log('the data >>>', data);
+//console.log('the data >>>', data);
 
 const tokenHeaders = {
   'Authorization': `Basic ${base64ClientIdAndSecret}`,
   'Content-Type': 'application/x-www-form-urlencoded',
 };
-console.log("tokenHeaders>>>",tokenHeaders);
+//console.log("tokenHeaders>>>",tokenHeaders);
 const settings = {
   method:'POST',
   headers:tokenHeaders,
 }
 // Construct the Reddit authorization URL with your parameters
       //const clientId = 'YOUR_CLIENT_ID';
-      const responseType = 'code';
-      const state = randomHex;
-      const redirectUri = 'http://localhost:3000/';
-      const duration = 'permanent'; // 'temporary' or 'permanent' if needed
-      const scope = 'read';
+      // const responseType = 'code';
+      // const state = randomHex;
+      // const redirectUri = 'http://localhost:3000/';
+      // const duration = 'permanent'; // 'temporary' or 'permanent' if needed
+      // const scope = 'read';
 
       //const redditAuthUrl = `https://www.reddit.com/api/v1/authorize?client_id=${clientId}&response_type=${responseType}&state=${state}&redirect_uri=${redirectUri}&duration=${duration}&scope=${scope}`;
         
@@ -64,19 +64,20 @@ const settings = {
       ///don't put window.location.href in a useEffect hook. and use window.location.href
       //with window.stop();
 
-       const urlParams = new URLSearchParams(window.location.search);
-       const code = urlParams.get('code');
-        console.log("Access code >>>",code);
+      //  const urlParams = new URLSearchParams(window.location.search);
+      //  const code = urlParams.get('code');
+      //   console.log("Access code >>>",code);
      
 
   useEffect(()=>{
 
+    //console.log("Access code >>>",accessCode);
     const redirectToReddit = () => {
       
-         const redditAuthUrl = `https://www.reddit.com/api/v1/authorize?client_id=${clientId}&response_type=${responseType}&state=${state}&redirect_uri=${redirectUri}&duration=${duration}&scope=${scope}`;
+         //const redditAuthUrl = `https://www.reddit.com/api/v1/authorize?client_id=${clientId}&response_type=${responseType}&state=${state}&redirect_uri=${redirectUri}&duration=${duration}&scope=${scope}`;
         
       //   // Redirect the user to the Reddit authorization page
-        window.location.href = redditAuthUrl;
+        //window.location.href = redditAuthUrl;
   
       // const urlParams = new URLSearchParams(window.location.search);
       // const code = urlParams.get('code');
@@ -105,12 +106,12 @@ const settings = {
     // }
 
     // if(!calledRedirect);
-    redirectToReddit();
+    //redirectToReddit();
 
     
     //getRedditToken();
 
-  },[])
+  },[accessCode])
 
   function handleClick(){
     const responseType = 'code';
@@ -128,16 +129,18 @@ const settings = {
        const code = urlParams.get('code');
       
         setAccessCode(code);
+        //console.log(code);
+        
   }
 
-  console.log("Access code >>>",code);
-
+ 
+  
   
   
     return(
     <>
       <header className ="App-header">
-      <button onClick={handleClick}>Click here to authenticate</button>
+      {/* <button onClick={handleClick}>Click here to authenticate</button> */}
         <div className="logo_background">
           <FaReddit size="2rem"/>
         </div>

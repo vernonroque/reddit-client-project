@@ -1,6 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 import React, { useEffect } from 'react';
-const subSliceToken = process.env.REACT_APP_REDDIT_API_TOKEN;
+import {selectDefaultMainfeed} from '../mainfeedSection/mainfeedSlice'
+import { useSelector } from 'react-redux';
 
 //const LOAD_SUBREDDITS = 'subreddits/loadSubreddits';
 
@@ -57,14 +58,19 @@ const subSliceToken = process.env.REACT_APP_REDDIT_API_TOKEN;
           getSubredditsFailed(state){
             state.isLoadingSubreddits = false;
             state.failedToLoadSubreddits = true;
-          }
+          },
+          copyDefaultMainfeedToSubreddits(state, action) {
+            // Copy the state from selectDefaultMainfeed to subreddits
+            state.subreddits = action.payload;
+          },
         }
       });
 
       export const {
         getSubredditsFailed,
         getSubredditsSuccess,
-        startGetSubreddits
+        startGetSubreddits,
+        copyDefaultMainfeedToSubreddits
       } = subredditsSlice.actions;
 
       export default subredditsSlice.reducer;
@@ -72,14 +78,20 @@ const subSliceToken = process.env.REACT_APP_REDDIT_API_TOKEN;
       //this is the async Thunk
       export const loadSubreddits = ()=> async (dispatch) => {
 
-        const response = await fetch(`https://www.reddit.com/r/popular.json?client_id=${subSliceToken}`,{cache:'no-cache'});
+        const response = await fetch(`https://www.reddit.com/r/popular.json`,);
           console.log("response>>>>",response);
           const json = await response.json();
           const subreddits = json.data.children.map((element) => element.data);
+        
           dispatch(getSubredditsSuccess(subreddits));
-
         
       };
+
+      export const copyDefaultMainfeedState = ()=> (dispatch,getState) => {
+        const defaultMainfeedState = selectDefaultMainfeed(getState()); // Get the state from selectDefaultMainfeed
+        dispatch(copyDefaultMainfeedToSubreddits(defaultMainfeedState)); // Dispatch the action to copy the state
+      };
+      
 
 
 export const selectSubreddits = (state) => state.subreddits.subreddits;
