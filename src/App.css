@@ -84,8 +84,11 @@ article{
   border: 2px solid blueviolet;
   height:2rem;
   width: 2rem;
+  margin-right:10px;
 }
 .subreddit_button{
+  display:flex;
+  align-items:center;
   cursor:pointer;
   font-family: 'Courier New', Courier, monospace;
   border: none;
