@@ -1,7 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
-import React, { useEffect } from 'react';
+//import React, { useEffect } from 'react';
 import {selectDefaultMainfeed} from '../mainfeedSection/mainfeedSlice'
-import { useSelector } from 'react-redux';
 
 //const LOAD_SUBREDDITS = 'subreddits/loadSubreddits';
 
@@ -78,7 +77,7 @@ import { useSelector } from 'react-redux';
       //this is the async Thunk
       export const loadSubreddits = ()=> async (dispatch) => {
 
-        const response = await fetch(`https://www.reddit.com/r/popular.json`,);
+        const response = await fetch(`https://www.reddit.com/r/popular.json`);
           console.log("response>>>>",response);
           const json = await response.json();
           const subreddits = json.data.children.map((element) => element.data);

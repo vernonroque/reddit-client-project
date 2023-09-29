@@ -1,8 +1,8 @@
-import React, { useState,useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadSubreddits,selectSubreddits } from './subredditSlice';
 import { SubredditList } from './subredditList';
-import { copyDefaultMainfeedState } from './subredditSlice'; // Import the action
+//import { copyDefaultMainfeedState } from './subredditSlice'; // Import the action
 import { selectDefaultMainfeed } from '../mainfeedSection/mainfeedSlice';
 
 

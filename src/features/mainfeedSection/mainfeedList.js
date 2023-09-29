@@ -35,7 +35,7 @@ export const MainfeedList = (props) => {
         <article className ="article_container">
             <div className="article_content_box">
                 <br/>
-                <a className="article_title" href={'https://www.reddit.com' + props.article.permalink} target='_blank'>
+                <a className="article_title" href={'https://www.reddit.com' + props.article.permalink} target='_blank' rel='noreferrer'>
                     {props.article.title}
                 </a>
                 <br/>
@@ -43,7 +43,7 @@ export const MainfeedList = (props) => {
                 {(props.article.url_overridden_by_dest &&
                 props.article.url_overridden_by_dest.includes('i.redd.it')
                     ) ?
-                <img className="actual_image" src={props.article.url_overridden_by_dest} alt='post thumbnail' onerror='this.style.display = "none"'/>: 'no pic available'} 
+                <img className="actual_image" src={props.article.url_overridden_by_dest} alt='post thumbnail' onerror='this.style.display = "none"'/>: ''} 
            
             </div>
             <CommentsContainer subreddit = {props.subreddit} article = {props.article}/>

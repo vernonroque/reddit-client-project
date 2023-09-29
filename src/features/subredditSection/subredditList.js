@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { loadMainfeedArticles } from '../mainfeedSection/mainfeedSlice';
-//import {redditLogo} from '../../../public/reddit-logo.png'
+import redditLogo from '../../reddit-logo-copy.png'
 
 export const SubredditList = (props) => {
      const[icon,setIcon] = useState('');
@@ -35,7 +35,7 @@ export const SubredditList = (props) => {
             <br></br>
             <li key={props.index} className="subredditList">
                 <button onClick= {(e) => dispatch(loadMainfeedArticles(props.subredditElement))} className="subreddit_button">
-                {(!icon) ? '/r ': <img className='subreddit_icon' src={icon} alt='subreddit thumbnail'/>}
+                {(!icon) ? <img className='subreddit_icon' src={redditLogo} alt='subreddit thumbnail'/>: <img className='subreddit_icon' src={icon} alt='subreddit thumbnail'/>}
                     {props.subredditElement}
                 </button>
                 
